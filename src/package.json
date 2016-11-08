@@ -1,0 +1,17 @@
+{
+  "name": "dockernodemongo",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Docker configuration for node+mongodb application",
+  "main": "src/app.js",
+  "engines": {
+    "node": "7.x"
+  },
+  "scripts": {},
+  "author": "Pavel Arapov",
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.x",
+    "mongoose": "^4.6.6"
+  }
+}

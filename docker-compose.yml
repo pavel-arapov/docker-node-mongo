@@ -1,0 +1,31 @@
+version: "2"
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./src/public:/src/public
+      - ./docker/nginx/app.com.conf:/etc/nginx/conf.d/app.com.conf
+    networks:
+      - code-network
+  app:
+    build: ./docker/node
+    command: bash -c 'cd src && npm install && node --debug=5858 /src/app.js --color=always'
+    ports:
+     - "3000:3000"
+    volumes :
+      - ./src:/src
+    networks:
+      - code-network
+  mongo:
+    image: mongo:latest
+#    ports:
+#     - "27017:27017"
+    volumes:
+        - ./data:/data/db
+    networks:
+        - code-network
+networks:
+  code-network:
+      driver: bridge
