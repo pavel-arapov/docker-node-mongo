@@ -7,7 +7,10 @@
   "engines": {
     "node": "7.x"
   },
-  "scripts": {},
+  "scripts": {
+    "start" : "nodemon /src/app.js",
+    "debug": "nodemon --debug=5858 /src/app.js --color=always"
+  },
   "author": "Pavel Arapov",
   "license": "ISC",
   "dependencies": {

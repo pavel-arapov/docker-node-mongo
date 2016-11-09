@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
 
-// Connect to mongodb
+// connect to mongodb
 var connect = function () {
     var options = {server: {socketOptions: {keepAlive: 1}}};
     mongoose.connect('mongodb://mongo/app', options);
@@ -12,11 +12,14 @@ connect();
 mongoose.connection.on('error', console.log);
 mongoose.connection.on('disconnected', connect);
 
+// load mongoose model
 require('./models/user');
 const User = mongoose.model('User');
 
+// declare static folder
 app.use(express.static('public'));
 
+// some test routes
 app.get('/hello', function (req, res) {
     res.send('world');
 });

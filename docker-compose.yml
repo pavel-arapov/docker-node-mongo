@@ -11,9 +11,10 @@ services:
       - code-network
   app:
     build: ./docker/node
-    command: bash -c 'cd src && npm install && node --debug=5858 /src/app.js --color=always'
+    command: bash -c 'cd src && npm install && npm run debug'
     ports:
      - "3000:3000"
+     - "5858:5858"
     volumes :
       - ./src:/src
     networks:
